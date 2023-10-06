@@ -56,24 +56,30 @@ button:hover {
   font-weight: 100;
 }
 
-.wrap-1 .col-4 {
+.hero-text {
   display: flex;
-  flex-flow: column;
+  flex-direction: column;
   justify-content: center;
+  height: 100%;
 }
 
-.wrap-1 .col-4 h2{
+.wrap-1 h2{
   font-size: 4em;
   font-weight: 100;
 }
 
-.wrap-1 .col-4 p{
-  font-size: 1.4rem;
+@media (max-width: 576px) {
+  .wrap-1 h2 {
+    font-size: 2em;
+  }
+
+  .hero-text {
+    margin-top: 15px;
+  }
 }
 
-.wrap-1 img {
-  max-width: 856px;
-  width: 120%;
+.wrap-1 p{
+  font-size: 1.4rem;
 }
 
 .wrap-2 {
@@ -110,8 +116,10 @@ button:hover {
   height: 360px;
 }
 
-.wrap-2 .outtercircle .innercircle{
-  position: absolute;
+.wrap-2 .innercircle {
+  display: inline-flex;
+  flex-direction: column;
+  /* position: absolute;
   left: 57px;
   top: 30px;
   background: #FFF;
@@ -121,7 +129,7 @@ button:hover {
   width: 100%;
   flex-direction: column;
   justify-content: center;
-  box-shadow: 5px 5px 40px -22px;
+  box-shadow: 5px 5px 40px -22px; */
 }
 
 .wrap-2 .outtercircle .thicircle {
@@ -136,6 +144,10 @@ button:hover {
 
 .wrap-2 .circle {
   margin: 0 0 150px;
+}
+
+.wrap-2 .box, .wrap-2 .apps {
+  row-gap: 20px;
 }
 
 .wrap-2 .box .shadow h3{ 
@@ -159,9 +171,7 @@ button:hover {
 } 
 
 .wrap-2 .apps .image-wrap {
-  position: absolute;
-  bottom: 62%;
-  left: 1%;
+  margin-top: -60px;
 }
 
 .wrap-2 p {
@@ -179,8 +189,6 @@ button:hover {
 }
 
 .wrap-2 .apps .shadow {
-  padding-top: 125px;
-  position: relative;
   border-radius: 5px;
 }
 
@@ -204,7 +212,6 @@ button:hover {
   text-align: left;
   font-size: 2rem;
   text-align: center;
-  margin-top: 85px;
 } 
 
 .wrap-3 {
@@ -214,41 +221,39 @@ button:hover {
   padding-bottom: 170px;
 }
 
-.wrap-3 .col-7::before {
+.wrap-3 .carousel-prev {
   position: absolute;
   top: 40%;
-  left: -28%;
+  left: 0;
   content: '<';
   font-size: 7rem;
   color: #ffd8d8;
+  cursor: pointer;
 }
 
-.wrap-3 .col-7::after {
+.wrap-3 .carousel-next {
   position: absolute;  
   top: 40%;
-  right: -28%;
+  right: 0;
   content: '>';
   font-size: 7rem;
   color: #ffd8d8;
+  cursor: pointer;
 }
 
-
-.wrap-3 .col-7 {
-  position: relative;
-}
 
 .wrap-3 .shadow {
+  position: relative;
   box-shadow: 5px 5px 40px -22px;
-  padding: 110px;
+  padding: 50px;
+  padding-top: 0;
   background: white;
+  max-width: min(calc(100vw / 1.8), 600px);
+  margin: 0 auto;
 }
 
 .wrap-3 img {
-  position: absolute;
-  top: -10%;
-  left: -2%;
-  right: 0;
-  margin: auto;
+  margin-top: -70px;
 }
 
 .wrap-3 .row {
@@ -260,14 +265,29 @@ button:hover {
   top: 1rem;
   left: 5rem;
   content: open-quote;
-  font-size: 12rem;
+  font-size: 18rem;
   color: #fe9718;
   font-family: sans-serif;
 }
 
+@media (max-width: 576px) {
+  .wrap-3 h3::before {
+    font-size: 10rem;
+    left: 1.5rem;
+  }
+
+  .wrap-3 .carousel::before, .wrap-3 .carousel::after {
+    font-size: 5rem;
+  }
+}
+
+.carousel .item:not(.active) {
+  display: none;
+}
+
 .wrap-3 h3 {
   font-size: 1.5rem;
-  margin-top: 3rem;
+  margin-top: 1rem;
 } 
 
 .wrap-3 h3 + p {
@@ -317,14 +337,6 @@ button:hover {
   background-size: cover;
   padding: 80px 0 50px;
   text-align: center;
-}
-
-.wrap-4 .row {
-  justify-content: center;
-}
-.wrap-4 .col-6 {
-  background: #FFF;
-  padding: 70px;
 }
 
 .wrap-4 select {
@@ -398,6 +410,13 @@ button:hover {
   color: #bfb0c7;
 }
 
+.request-form {
+  padding: 70px;
+  background: #FFF;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
 .wrap-5 {
   background: #32004b;
   color: #fff;
@@ -417,7 +436,7 @@ button:hover {
   text-align: center;
 }
 
-.wrap-5 .col-2 a {
+.wrap-5 .link {
   display: block;
   margin-bottom: 20px;
 }
@@ -448,20 +467,31 @@ button:hover {
   text-align: center;
   color: #32004b;
   padding: 8px;
-  padding-left: 10px;
 }
 
 .wrap-5 .socials {
-  margin-bottom: 80px;
+  display: flex;
 }
 
 .wrap-5 .socials a {
   background-color: #bfb0c7;
   border-radius: 50%;
-  max-width: 30px;
-  max-height: 30px;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.wrap-5 .row {
+  row-gap: 20px;
+}
+
+.social-links {
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
   height: 100%;
-  width: 100%;
 }
 
 .wrap-5 .col-5 {
@@ -479,9 +509,6 @@ button:hover {
   margin-top: 20px;
 }
 
-.wrap-5 .col-4 {
-  padding-top: 6rem;
-}
 .wrap-5 .col-4 .row {
   padding: 0 15px;
 }
@@ -505,11 +532,9 @@ button:hover {
 }
 
 .wrap-5 input {
-  max-width: 20rem;
   border: 1px solid #bfb0c7;
   background: #28023b;
-  padding: 18px;
+  padding: 12px 18px;
   border-radius: 30px;
   width: 100%;
-  margin-right: 1rem;
 }
